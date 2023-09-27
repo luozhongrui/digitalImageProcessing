@@ -6,7 +6,9 @@ def click_event(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
         print("----------------------------------")
         print(f"coordinate：({x}, {y})")
-        cv2.circle(img, (x, y), 5, (255, 0, 0), -1)
+        cv2.circle(img, (x, y), 5, (0, 0, 255), -1)
+        cv2.putText(img, f"({x}, {y})", (x, y),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         cv2.imshow('Original Image', img)
 
 
@@ -19,10 +21,12 @@ if __name__ == '__main__':
     # src_pts = np.array([[0, 0], [100, 0], [100, 100], [0, 100]], dtype='float32')
 
     # After inspecting the actual image,
-    src_pts = np.array([[1347, 248], [1153, 698], [475, 423], [810, 77]], dtype='float32')
+    src_pts = np.array([[1347, 248], [1153, 698], [
+                       475, 423], [810, 77]], dtype='float32')
 
     # Define destination points for the projected output
-    dst_pts = np.array([[0, 0], [500, 0], [500, 500], [0, 500]], dtype='float32')
+    dst_pts = np.array(
+        [[0, 0], [500, 0], [500, 500], [0, 500]], dtype='float32')
 
     # Estimate the homography transformation
     M, _ = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
