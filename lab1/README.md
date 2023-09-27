@@ -1,3 +1,18 @@
+## Prerequisites
+
+```shell(.line-numbers)
+source env/bin/active
+pip install -r requirements.txt
+```
+
+## usage
+
+```shell
+cd part1 && python display.py
+cd part2 && python geomtrical_transformations.py
+cd part3 && python histogram_display.py
+```
+
 ## Objectives
 
 - Introduction to fundamentals of colour image acquisition representation and display.
