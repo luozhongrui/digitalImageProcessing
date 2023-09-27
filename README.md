@@ -1,2 +1,3 @@
-# digitalImageProcessing
-EEEN60161 digital image processing
+# EEEN60161 digital image processing
+
+- lab 1
