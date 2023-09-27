@@ -1,12 +1,14 @@
 import cv2
 import numpy as np
 
+
 def click_event(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
         print("----------------------------------")
         print(f"coordinate：({x}, {y})")
         cv2.circle(img, (x, y), 5, (255, 0, 0), -1)
         cv2.imshow('Original Image', img)
+
 
 if __name__ == '__main__':
     image_path = "myBoard.jpg"
@@ -34,5 +36,3 @@ if __name__ == '__main__':
     cv2.imshow("Rectified Image", warped_img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
-

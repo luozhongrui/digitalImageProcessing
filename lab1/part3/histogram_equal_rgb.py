@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 cap = cv2.VideoCapture(1)
 
-# 初始化matplotlib窗口
+# Initialize the matplotlib window
 plt.ion()
 fig, axs = plt.subplots(2, 2, figsize=(12, 8))
 
@@ -13,12 +13,12 @@ while True:
     if not ret:
         break
 
-    # 对每个通道进行直方图均衡化
+    # Convert to grayscale image
     channels = cv2.split(frame)
     equ_channels = [cv2.equalizeHist(ch) for ch in channels]
     equ = cv2.merge(equ_channels)
 
-    # 计算直方图
+    # Calculate Histogram
     colors = ('b', 'g', 'r')
     for i, col in enumerate(colors):
         hist_frame = cv2.calcHist([frame], [i], None, [256], [0, 256])
@@ -27,7 +27,7 @@ while True:
         hist_equ = cv2.calcHist([equ], [i], None, [256], [0, 256])
         axs[1, 1].plot(hist_equ, color=col)
 
-    # 显示原始图像和均衡化后的图像
+    # Display original image and equalized image
     axs[0, 0].imshow(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
     axs[0, 0].set_title('Original Image')
     axs[0, 0].axis('off')
@@ -47,11 +47,11 @@ while True:
     plt.draw()
     plt.pause(0.01)
 
-    # 清除之前的图像，为下一帧做准备
+    # Clear previous image for next frame
     for ax in axs.ravel():
         ax.clear()
 
-    # 按'q'退出循环
+    # Press 'q' to exit
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
