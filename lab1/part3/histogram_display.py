@@ -9,7 +9,7 @@ if __name__ == '__main__':
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
     # Display the original histogram
-    hist, bins = np.histogram(gray.flatten(), 256, [0,256])
+    hist, bins = np.histogram(gray.flatten(), 256, [0, 256])
     plt.figure()
     plt.title('Original Histogram')
     plt.bar(bins[:-1], hist, width=0.8, align='center')
@@ -25,7 +25,7 @@ if __name__ == '__main__':
     equal_gray = cv2.cvtColor(equalized_image, cv2.COLOR_BGR2GRAY)
 
     # Display the equalized histogram
-    hist, bins = np.histogram(equal_gray.flatten(), 256, [0,256])
+    hist, bins = np.histogram(equal_gray.flatten(), 256, [0, 256])
     plt.figure()
     plt.title('Equalized Histogram')
     plt.bar(bins[:-1], hist, width=0.8, align='center')
@@ -36,5 +36,3 @@ if __name__ == '__main__':
     cv2.imshow('Original vs. Equalized', combined)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
-
