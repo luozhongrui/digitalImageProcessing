@@ -5,19 +5,19 @@ import matplotlib.pyplot as plt
 
 def add_fog(image, fog_intensity=0.5, fog_color=(255, 255, 255)):
     """
-    添加雾化效果
+    Adding Fog to an Image
 
-    :param image: 输入的图像
-    :param fog_intensity: 雾的浓度，范围[0, 1]，值越大雾越浓
-    :param fog_color: 雾的颜色，默认为白色
-    :return: 添加雾后的图像
+    :param image: Input image
+    :param fog_intensity: Fog concentration, range [0, 1], the larger the value the more dense the fog is
+    :param fog_color: Fog color, default is white
+    :return: Fogged image
     """
 
-    # 根据雾的浓度和颜色创建一个雾化层
+    # Create a fog layer based on the consistency and color of the fog
     fog_layer = np.ones_like(image, dtype=np.uint8) * \
         np.array(fog_color, dtype=np.uint8)
 
-    # 使用加权和合并原始图像和雾化层
+    # Add fog to the image
     fogged_image = cv2.addWeighted(
         image,
         1 - fog_intensity,
@@ -29,7 +29,7 @@ def add_fog(image, fog_intensity=0.5, fog_color=(255, 255, 255)):
 
 
 if __name__ == '__main__':
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
 
     # Initialize the matplotlib window
     plt.ion()
