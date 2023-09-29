@@ -14,17 +14,18 @@ if __name__ == '__main__':
             break
 
         # Convert to grayscale image
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2YCrCb)
+        y, cb, cr = cv2.split(gray)
 
         # Perform histogram equalization
-        equ = cv2.equalizeHist(gray)
+        equ = cv2.equalizeHist(y)
 
         # Calculate Histogram
-        hist_gray = cv2.calcHist([gray], [0], None, [256], [0, 256])
+        hist_gray = cv2.calcHist([y], [0], None, [256], [0, 256])
         hist_equ = cv2.calcHist([equ], [0], None, [256], [0, 256])
 
         # Display original image and equalized image
-        axs[0, 0].imshow(gray, cmap='gray')
+        axs[0, 0].imshow(y, cmap='gray')
         axs[0, 0].set_title('Original Image')
         axs[0, 0].axis('off')
 

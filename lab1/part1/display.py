@@ -44,7 +44,7 @@ def YCrCb():
         bgr_frame = cv2.cvtColor(yCrCb_frame, cv2.COLOR_YCrCb2BGR)
         cv2.imshow("YCrCb_Cr", bgr_frame)
         cv2.waitKey(10)
-        time.sleep(0.2)
+        time.sleep(0.01)
     cv2.destroyWindow("YCrCb_Cr")
     print("--------------------")
     # adjust the Cb channel
@@ -57,7 +57,7 @@ def YCrCb():
         bgr_frame = cv2.cvtColor(yCrCb_frame, cv2.COLOR_YCrCb2BGR)
         cv2.imshow("YCrCb_Cb", bgr_frame)
         cv2.waitKey(10)
-        time.sleep(0.5)
+        time.sleep(0.01)
     print("--------------------")
     cam.release()
     cv2.destroyAllWindows()
@@ -83,7 +83,7 @@ def HSV():
         bgr_frame = cv2.cvtColor(hsv_frame, cv2.COLOR_HSV2BGR)
         cv2.imshow("HSV_H", bgr_frame)
         cv2.waitKey(10)
-        time.sleep(0.5)
+        time.sleep(0.1)
     cv2.destroyWindow("HSV_H")
     # adjust the S channel
     i = 0.0
@@ -95,7 +95,7 @@ def HSV():
         bgr_frame = cv2.cvtColor(hsv_frame, cv2.COLOR_HSV2BGR)
         cv2.imshow("HSV_S", bgr_frame)
         cv2.waitKey(10)
-        time.sleep(1)
+        time.sleep(0.5)
     cv2.destroyWindow("HSV_S")
 
 
@@ -176,4 +176,4 @@ if __name__ == "__main__":
     # YCrCb()
     # HSV()
     filter_ycbcr()
-    # filter_hsv()
+    filter_hsv()

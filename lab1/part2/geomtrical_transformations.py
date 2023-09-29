@@ -16,7 +16,7 @@ if __name__ == '__main__':
     image_path = "myBoard.jpg"
     img = cv2.imread(image_path)
 
-    # Define source points from the input image
+
     # Initially set to [0 0;100 0;100 100;0 100]
     # src_pts = np.array([[0, 0], [100, 0], [100, 100], [0, 100]], dtype='float32')
 

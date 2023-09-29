@@ -29,7 +29,7 @@ def add_fog(image, fog_intensity=0.5, fog_color=(255, 255, 255)):
 
 
 if __name__ == '__main__':
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
 
     # Initialize the matplotlib window
     plt.ion()

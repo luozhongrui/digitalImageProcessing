@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
-    # Load the image or video
     image_path = "myBoard.jpg"
     image = cv2.imread(image_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
