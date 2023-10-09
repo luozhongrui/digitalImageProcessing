@@ -3,6 +3,7 @@ from utils import get_coordinate
 import cv2
 import matplotlib.pyplot as plt
 
+
 def euclidean_distance(point1, point2):
     return math.sqrt((point1[0] - point2[0]) ** 2 +
                      (point1[1] - point2[1]) ** 2)
@@ -47,10 +48,11 @@ def calculate_difference(set1, set2):
             error_points.append((point1, point2))
     return error_points, remaining_points_1, remaining_points_2
 
+
 def error_histogram(error_points):
     histogram = []
     for point1, point2 in error_points:
-        histogram.append(euclidean_distance(point1, point2)*0.075)
+        histogram.append(euclidean_distance(point1, point2) * 0.075)
     plt.hist(histogram, bins=20, color='steelblue', edgecolor='k')
     plt.xlabel('inaccuracies')
     plt.ylabel('number')
@@ -72,5 +74,3 @@ if __name__ == '__main__':
 
     error, _, _ = find_closest_points(coors, key_point)
     error_histogram(error)
-
-

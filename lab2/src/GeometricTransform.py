@@ -30,7 +30,7 @@ def warp_image():
     dst_points = np.array(target_points, dtype=np.float32)
 
     matrix, _ = cv2.findHomography(np.array(points, dtype=np.float32),
-                                  dst_points, cv2.RANSAC, 5.0)
+                                   dst_points, cv2.RANSAC, 5.0)
     result = cv2.warpPerspective(dump, matrix, (600, 600))
     # cv2.imwrite("image/warp.jpg", result)
     points = []

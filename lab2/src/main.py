@@ -1,12 +1,9 @@
-import math
 import cv2
-import numpy as np
 from GeometricTransform import get_geometric_transform
 from scale import resize_image
-from gray2bin import blobs_method, contours_image_method, adaptive_threshold
+from gray2bin import blobs_method
 from calculate_coordinates import calculate_difference, error_histogram, find_closest_points
 from prettytable import PrettyTable
-
 
 
 if __name__ == '__main__':
@@ -38,11 +35,13 @@ if __name__ == '__main__':
     table.add_row([len(result), len(remain_coors), len(remain_key)])
     print(table)
     table = PrettyTable()
-    table.field_names = ["error coordinate", "Redundant predetermined coordinates", "Redundant real points"]
+    table.field_names = [
+        "error coordinate",
+        "Redundant predetermined coordinates",
+        "Redundant real points"]
     table.add_row([result, remain_coors, remain_key])
     table.max_width = 50
     print(table)
-
 
     cv2.imshow("blob_img", blob_img)
     errors, _, _, = find_closest_points(coors.copy(), key_points.copy())

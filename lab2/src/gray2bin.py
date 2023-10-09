@@ -63,10 +63,8 @@ def blobs_method(image):
     return keypoints, image_blob
 
 
-
 def contours_image_method(image):
     pass
-
 
 
 if __name__ == '__main__':
