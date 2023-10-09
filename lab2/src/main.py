@@ -4,13 +4,22 @@ import numpy as np
 from GeometricTransform import get_geometric_transform
 from scale import resize_image
 from gray2bin import blobs_method, contours_image_method, adaptive_threshold
-from calculate_coordinates import  calculate_difference, error_histogram, find_closest_points
-
+from calculate_coordinates import calculate_difference, error_histogram, find_closest_points
+from prettytable import PrettyTable
 
 
 
 if __name__ == '__main__':
+    # cap = cv2.VideoCapture(1)
+    # cap.set(3, 1280)  # Set the width (3) property of the camera
+    # cap.set(4, 720)
     img = cv2.imread("image/pcb.bmp")
+    # while True:
+    #     ret, frame = cap.read()
+    #     img = frame.copy()
+    #     cv2.imshow("frame", frame)
+    #     if cv2.waitKey(1) & 0xFF == ord('q'):
+    #         break
     wrap_img = get_geometric_transform(img)
     scale_img, coors = resize_image(wrap_img, 1000)
     scale_img = cv2.cvtColor(scale_img, cv2.COLOR_BGR2GRAY)
@@ -23,13 +32,16 @@ if __name__ == '__main__':
         key_points.append(point.pt)
     result, remain_coors, remain_key = calculate_difference(coors.copy(),
                                                             key_points.copy())
-    print("Number of Points with an error of more than 3mm: ", len(result))
-    print("error coordinate: ", result)
-    print("Number of Redundant predetermined coordinates: ", len(remain_coors))
-    print("Redundant predetermined coordinates: ", remain_coors)
-    print("Number of Redundant key points: ", len(remain_key))
-    print("Redundant key points: ", remain_key)
-
+    table = PrettyTable()
+    table.field_names = ["Number of errors greater than 3mm", "Number of "
+                                                              "Redundant predetermined coordinates", "Number of Redundant real points"]
+    table.add_row([len(result), len(remain_coors), len(remain_key)])
+    print(table)
+    table = PrettyTable()
+    table.field_names = ["error coordinate", "Redundant predetermined coordinates", "Redundant real points"]
+    table.add_row([result, remain_coors, remain_key])
+    table.max_width = 50
+    print(table)
 
 
     cv2.imshow("blob_img", blob_img)
