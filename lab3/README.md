@@ -1,8 +1,11 @@
 # EEEN4/60161 Digital Image Processing LABORATORY 3 (2022/23)
 
-**Objectives:**
-• Understand and practise frequency-domain image processing
-• Understand block-based image processing and DCT-based image coding
+**Objectives:** 
+
+• Understand and practise frequency-domain image processing 
+
+• Understand block-based image processing and DCT-based image coding 
+
 
 ## Introduction
 
