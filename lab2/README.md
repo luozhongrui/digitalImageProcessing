@@ -4,8 +4,10 @@ Objective: Meet an industrial inspection requirement.
 
 ## Introduction
 
-An image processing system is required to detect the small holes in a printed circuit board (PCB) and to compare their position against a pre-defined specification. The primary aim of this experiment is to process the image so that an overlay of detected hole positions (say using red markers) can be shown plus an overlay of the pre-defined positions (say using green markers). A sample image (partial) is shown in Figure 1. It should be obvious by looking at the combined image if any holes are incorrect. A secondary objective (if time permits) will be to automatically produce a list of the coordinates of any small holes that are not present and the coordinates of any holes that fall more than 0.3 mm from the specified location.
-![](./image/1.png)
+An image processing system is required to detect the small holes in a printed circuit board (PCB) and to compare their position against a pre-defined specification. The primary aim of this experiment is to process the image so that an overlay of detected hole positions (say using red markers) can be shown plus an overlay of the pre-defined positions (say using green markers). A sample image (partial) is shown in Figure 1. It should be obvious by looking at the combined image if any holes are incorrect. A secondary objective (if time permits) will be to automatically produce a list of the coordinates of any small holes that are not present and the coordinates of any holes that fall more than 0.3 mm from the specified location. 
+
+![](./image/1.png) 
+
 This laboratory exercise involves solving two problems. The first problem is to align the image with the coordinate system of the drill. A file containing the coordinates of the small drill holes is provided on Blackboard. The circuit boards are around 74 mm square and the coordinates are given in units of 0.1 mm. The registration should be visually confirmed using an image overlay.
 The image must then be processed to identify the positions of the small drill holes. A second image overlay is then generated. All of the big holes should be ignored.
 To meet the final objective (quantitative analysis) the coordinates of the drill holes must be converted into a list format and a procedure devised to find correspondences between the coordinates and the drill holes.
@@ -18,8 +20,10 @@ Set up the system shown in Figure 2 as a Simulink model with “From Video Devic
 
 The “Estimate Geometric Transform” block requires at least four corresponding points to be specified for projective transformation. For now, we can simply give any four points via a constant block: [0 0;100 0;100 100;0 100]. This should be the same for both inputs (later you can adjust the transform to match up the image with the drill coordinates).
 
-Now run the model and confirm image display.
-![](./image/2.png)
+Now run the model and confirm image display. 
+
+![](./image/2.png) 
+
 This model will not solve the problem; the aim is simply to introduce the “Draw Marker” and the geometric transform blocks. The model “smallholes.mdl” contains a constant block called small holes that produces an output list of (x, y) coordinates for the hole positions. Remember that these coordinates refer to the PCB itself. When they appear in the actual image, they will be subjected to a perspective transformation.
 
 2. Setting up the geometric transformation
@@ -36,8 +40,10 @@ _Hints:_
 
 The first step is generally to apply a thresholding operation to produce a binary image. There is an automatic threshold block available that uses Otsu’s method. However, this may not produce consistent results. An alternative is to set a constant threshold using a constant block and a “Relational Operator” (which can be found in the “commonly used blocks” section). The image shown in Figure 1 shows the effect of uneven illumination. It may be impossible to achieve sufficiently uniform illumination in actual inspection, so you might consider using image processing operations such as histogram equalisation and homomorphic filtering to mitigate this problem before or after thresholding.
 
-Try to avoid detecting the dark patch at the centre of the holes as this is not a reliable feature. Instead concentrate on the bright ring that surrounds all the holes and detect this instead using appropriate morphological operators. A (poor-quality) sample close-up image is shown in Figure 3. It can be seen that the low resolution used here will make it difficult to achieve a reliable segmentation. It is a good idea to inspect the features you are using a zoom viewer in order to understand any problems that occur.
-![](./image/3.png)
+Try to avoid detecting the dark patch at the centre of the holes as this is not a reliable feature. Instead concentrate on the bright ring that surrounds all the holes and detect this instead using appropriate morphological operators. A (poor-quality) sample close-up image is shown in Figure 3. It can be seen that the low resolution used here will make it difficult to achieve a reliable segmentation. It is a good idea to inspect the features you are using a zoom viewer in order to understand any problems that occur. 
+
+![](./image/3.png) 
+
 Once it is working, a “Blob Analysis” block can be used to detect blob regions in the binary image automatically, and then you need to set up a second marker block so that your detected holes are overlaid onto the known positions (use a second marker block in series with the first and with a different colour). It should be possible then to compare the positions by eye and detect any problems.
 
 4. Quantitative checking of hole positions
