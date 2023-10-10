@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from utils import get_coordinate
+
 
 
 def adaptive_threshold(image):
@@ -39,12 +39,14 @@ def apply_morphological_operation(image):
 def detect_blobs(image, original_img):
     circle_image = cv2.bitwise_not(image)
     params = cv2.SimpleBlobDetector_Params()
+    params.minThreshold = 50
+    params.maxThreshold = 144
     # 设置最小和最大的面积
     params.filterByArea = True
     params.minArea = 11
     params.maxArea = 200
     params.filterByCircularity = True
-    # params.minCircularity = 0.9     # 圆形度
+    params.minCircularity = 0.82     # 圆形度
     detector = cv2.SimpleBlobDetector_create(params)
     keypoints = detector.detect(circle_image)
 
@@ -63,8 +65,6 @@ def blobs_method(image):
     return keypoints, image_blob
 
 
-def contours_image_method(image):
-    pass
 
 
 if __name__ == '__main__':
