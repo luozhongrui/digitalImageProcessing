@@ -1,3 +1,5 @@
+# EEEN4/60161 Digital Image Processing LABORATORY 1 (2023/24)
+
 ## Prerequisites
 
 ```shell(.line-numbers)
