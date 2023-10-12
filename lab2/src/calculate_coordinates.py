@@ -53,10 +53,18 @@ def error_histogram(error_points):
     histogram = []
     for point1, point2 in error_points:
         histogram.append(euclidean_distance(point1, point2) * 0.075)
-    plt.hist(histogram, bins=20, color='steelblue', edgecolor='k')
-    plt.xlabel('inaccuracies')
-    plt.ylabel('number')
-    plt.title('error histogram')
+    # plt.hist(histogram, bins=20, color='steelblue', edgecolor='k')
+    n, bins, patches = plt.hist(histogram, bins=20, color='steelblue',
+                                edgecolor='k')
+    plt.xlabel('Inaccuracy value (mm)')
+    plt.ylabel('Number of points')
+    plt.title('Error histogram')
+    plt.xticks([round(i, 2) for i in plt.xticks()[0]])
+    plt.yticks([round(i, 2) for i in plt.yticks()[0]])
+    for i in range(len(patches)):
+        plt.text(patches[i].get_x() + patches[i].get_width() / 2,
+                 patches[i].get_height() + 3, str(int(n[i])), ha='center')
+
     plt.show()
 
 
