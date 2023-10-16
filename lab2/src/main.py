@@ -4,20 +4,25 @@ from scale import resize_image
 from gray2bin import blobs_method
 from calculate_coordinates import calculate_difference, error_histogram, find_closest_points
 from prettytable import PrettyTable
-
+import numpy as np
 
 if __name__ == '__main__':
-    # cap = cv2.VideoCapture(1)
+    # cap = cv2.VideoCapture(0)
     # cap.set(3, 1280)  # Set the width (3) property of the camera
     # cap.set(4, 720)
-    img = cv2.imread("image/pcb.bmp")
+    img = cv2.imread("image/pcb6.jpg")
+    img = cv2.resize(img, (1280, 720))
+    # img.resize((1280, 720))
     # while True:
     #     ret, frame = cap.read()
     #     img = frame.copy()
     #     cv2.imshow("frame", frame)
     #     if cv2.waitKey(1) & 0xFF == ord('q'):
     #         break
+    # # matrix = np.load("image/matrix.npy")
+    # cap.release()
     wrap_img = get_geometric_transform(img)
+    # wrap_img = cv2.warpPerspective(img, matrix, (600, 600))
     scale_img, coors = resize_image(wrap_img, 1000)
     scale_img = cv2.cvtColor(scale_img, cv2.COLOR_BGR2GRAY)
     scale_img = cv2.equalizeHist(scale_img)

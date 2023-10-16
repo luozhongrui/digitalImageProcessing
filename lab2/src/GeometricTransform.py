@@ -31,6 +31,7 @@ def warp_image():
 
     matrix, _ = cv2.findHomography(np.array(points, dtype=np.float32),
                                    dst_points, cv2.RANSAC, 5.0)
+    # np.save("image/matrix.npy", matrix)
     result = cv2.warpPerspective(dump, matrix, (600, 600))
     # cv2.imwrite("image/warp.jpg", result)
     points = []
@@ -56,11 +57,12 @@ def get_geometric_transform(image):
 
 if __name__ == '__main__':
     img = cv2.imread("image/pcb.bmp")
+    img = cv2.resize(img, (1280, 720))
     wrap_img = get_geometric_transform(img)
     coordinates = get_coordinate()
     for coordinate in coordinates:
         cv2.circle(wrap_img, (int(coordinate[0]), int(coordinate[1])), 3,
-                   (0, 0, 255))
+                   (0, 255, 0), -1)
 
     cv2.imshow("wrap", wrap_img)
     cv2.waitKey(0)

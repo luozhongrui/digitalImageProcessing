@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 
+def click_event(event, x, y, flags, param):
+    if event == cv2.EVENT_LBUTTONDOWN:
+        print(x, y)
 
 
 def adaptive_threshold(image):
@@ -28,10 +31,13 @@ def apply_morphological_operation(image):
     circle_kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,
                                               (circle_size, circle_size))
     dilated_image = cv2.dilate(eroded_image, circle_kernel, iterations=1)
+    cv2.imshow("dilated_image", dilated_image)
+    cv2.setMouseCallback("dilated_image", click_event)
     dilated_image[393: 407, 286:299] = 0
     dilated_image[762:784, 204:223] = 0
     dilated_image[518:529, 270:284] = 0
     dilated_image[541:553, 270:282] = 0
+    dilated_image[427:466, 286:432] = 0
     return dilated_image
 
 
@@ -41,7 +47,6 @@ def detect_blobs(image, original_img):
     params = cv2.SimpleBlobDetector_Params()
     params.minThreshold = 50
     params.maxThreshold = 144
-    # 设置最小和最大的面积
     params.filterByArea = True
     params.minArea = 11
     params.maxArea = 200

@@ -121,12 +121,6 @@ if __name__ == '__main__':
     cap = cv2.VideoCapture(0)
     cap.set(3, 1280)  # Set the width (3) property of the camera
     cap.set(4, 720)
-    # img = cv2.imread("image/pcb.bmp")
-    # setup_location(img.copy())
-    # matrix = np.load("image/matrix_set.npy")
-    # location = np.load("image/location_set.npy")
-    # img = draw_roi(img, location)
-    location = []
     flag = False
     while True:
         ret, frame = cap.read()
@@ -144,36 +138,5 @@ if __name__ == '__main__':
         if cv2.waitKey(1) & 0xFF == ord('q'):
             cv2.destroyWindow("frame")
             break
-    # wrap_img = get_geometric_transform(img)
-    # wrap_img = cv2.warpPerspective(img, matrix, (600, 600))
-    # scale_img, coors = resize_image(wrap_img, 1000)
-    # scale_img = cv2.cvtColor(scale_img, cv2.COLOR_BGR2GRAY)
-    # scale_img = cv2.equalizeHist(scale_img)
-    # blob_points, blob_img = blobs_method(scale_img)
-    # for coor in coors:
-    #     cv2.circle(blob_img, (coor[0], coor[1]), 5, (0, 0, 255), -1)
-    # key_points = []
-    # for point in blob_points:
-    #     key_points.append(point.pt)
-    # result, remain_coors, remain_key = calculate_difference(coors.copy(),
-    #                                                         key_points.copy())
-    # table = PrettyTable()
-    # table.field_names = ["Number of errors greater than 3mm", "Number of "
-    #                                                           "Redundant predetermined coordinates", "Number of Redundant real points"]
-    # table.add_row([len(result), len(remain_coors), len(remain_key)])
-    # print(table)
-    # table = PrettyTable()
-    # table.field_names = [
-    #     "error coordinate",
-    #     "Redundant predetermined coordinates",
-    #     "Redundant real points"]
-    # table.add_row([result, remain_coors, remain_key])
-    # table.max_width = 50
-    # print(table)
-    #
-    # cv2.imshow("blob_img", blob_img)
-    # errors, _, _, = find_closest_points(coors.copy(), key_points.copy())
-    # error_histogram(errors)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+
 
