@@ -27,7 +27,8 @@ imshow(abs(y)/max(max(abs(y))));
 figure; y=fftshift(fft2(x));
 imshow(abs(y)/max(max(abs(y))));
 % display log magnitude (shifted) DFT magnitude iamge
-figure; imshow(log(abs(y)),[]); colormap(gray);
+figure; imshow(log(abs(y)),[]);
+colormap(gray);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % part 2                                                                  %
@@ -36,9 +37,9 @@ figure; imshow(log(abs(y)),[]); colormap(gray);
 % Perform 2D DFT on the grey level image (e.g. after, X=ind2gray(I,map))  %
 % and display the magnitude spectrum.                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-close all;
-clear;
-clc;
+% close all;
+% clear;
+% clc;
 % Load the grayscale image
 [I, map] = imread('image/lena_gray.png');
 
@@ -58,7 +59,7 @@ magnitude_spectrum = abs(F);
 
 % Display the magnitude spectrum
 figure;
-imshow(log(1 + magnitude_spectrum), []);
+imshow(log(magnitude_spectrum), []);
 title('Magnitude Spectrum (log scale)');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
