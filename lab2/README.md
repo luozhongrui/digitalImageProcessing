@@ -10,33 +10,34 @@ pip install -r requirements.txt
 ```
 
 ## File structure
-
-src
-├── GeometricTransform.py
-├── auto.py
-├── calculate_coordinates.py
-├── coordinate.csv
-├── gray2bin.py
-├── image
-│ ├── location.npy
-│ ├── location_set.npy
-│ ├── matrix.npy
-│ ├── matrix_set.npy
-│ ├── pcb.bmp
-│ ├── pcb1.jpg
-│ ├── pcb2.jpg
-│ ├── pcb3.jpg
-│ ├── pcb4.jpg
-│ ├── pcb5.jpg
-│ ├── pcb6.jpg
-│ ├── pcb7.jpg
-│ ├── result.csv
-│ ├── scale.csv
-│ ├── scale.jpg
-│ └── warp.jpg
-├── main.py
-├── scale.py
+```
+src 
+├── GeometricTransform.py 
+├── auto.py 
+├── calculate_coordinates.py 
+├── coordinate.csv 
+├── gray2bin.py  
+├── image 
+│ ├── location.npy 
+│ ├── location_set.npy 
+│ ├── matrix.npy 
+│ ├── matrix_set.npy 
+│ ├── pcb.bmp 
+│ ├── pcb1.jpg 
+│ ├── pcb2.jpg 
+│ ├── pcb3.jpg  
+│ ├── pcb4.jpg 
+│ ├── pcb5.jpg 
+│ ├── pcb6.jpg  
+│ ├── pcb7.jpg 
+│ ├── result.csv 
+│ ├── scale.csv 
+│ ├── scale.jpg 
+│ └── warp.jpg 
+├── main.py 
+├── scale.py 
 └── utils.py
+```
 
 ## Automatic detection
 
